@@ -1,0 +1,27 @@
+import subprocess
+import argparse
+def get_subtitle(input_path,output_path):
+
+    #cmd = f'ffmpeg -i input_path  output_path'
+    cm = f'ffmpeg -i ' + input_path +" "+ output_path
+
+    print(cm)
+    pt=subprocess.run(cm, shell=True)
+
+
+    if pt.returncode == 0:
+        print('command successfully executed!')
+    else:
+        print(' command failed')
+
+
+if __name__ == "__main__":
+   parser = argparse.ArgumentParser()
+   parser.add_argument("--input_path", help="full path of input file")
+   parser.add_argument("--output_path", help="full path of desired output folder")
+   args = parser.parse_args()
+
+   in_path = args.input_path
+   out_path =args.output_path
+
+   get_subtitle(in_path,out_path)
